@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.wg.game.domain.user.User;
+
 @Entity
 @Table(name = "game_dish_player")
 public class GameDishPlayer implements Serializable{
@@ -29,7 +31,7 @@ public class GameDishPlayer implements Serializable{
 
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "game_room_id")
-	private GameRoom gameRoom;
+	private GameDish gameDish;
 	
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
@@ -95,12 +97,12 @@ public class GameDishPlayer implements Serializable{
 		this.id = id;
 	}
 
-	public GameRoom getGameRoom() {
-		return gameRoom;
+	public GameDish getGameDish() {
+		return gameDish;
 	}
 
-	public void setGameRoom(GameRoom gameRoom) {
-		this.gameRoom = gameRoom;
+	public void setGameDish(GameDish gameDish) {
+		this.gameDish = gameDish;
 	}
 
 	public User getUser() {

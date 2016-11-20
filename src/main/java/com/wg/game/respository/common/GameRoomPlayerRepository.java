@@ -7,12 +7,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.wg.game.domain.common.GameDish;
 import com.wg.game.domain.common.GameRoomPlayer;
 
+public interface GameRoomPlayerRepository extends JpaRepository<GameRoomPlayer, Long>, JpaSpecificationExecutor<GameRoomPlayer>{
 
-public interface GameDishRepository extends JpaRepository<GameDish, Long>, JpaSpecificationExecutor<GameDish>{
-
-	@Query("SELECT u FROM GameDish u WHERE u.gameRoom.roomNo =:roomNo")
-	List<GameDish> findByRoomNo(@Param("roomNo") String roomNo);
+	@Query("SELECT u FROM GameRoomPlayer u WHERE u.gameRoom.roomNo =:roomNo")
+	List<GameRoomPlayer> findByRoomNo(@Param("roomNo") String roomNo);
+	
 }

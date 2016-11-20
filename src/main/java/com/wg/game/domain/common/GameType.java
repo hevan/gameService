@@ -26,6 +26,7 @@ public class GameType implements Serializable{
 	@Column(length = 20)
 	private String name;
 	
+	private String type; //0对战，1多人，2博彩
 	
 	private BigDecimal usedGold; //消耗金币数
 	
@@ -85,6 +86,14 @@ public class GameType implements Serializable{
 
 	public void setUsedGold(BigDecimal usedGold) {
 		this.usedGold = usedGold;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	

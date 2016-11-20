@@ -1,4 +1,4 @@
-package com.wg.game.respository.common;
+package com.wg.game.respository.common.user;
 
 
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.wg.game.domain.common.User;
+import com.wg.game.domain.user.User;
 
 @Repository
 public  interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User>
@@ -19,4 +19,7 @@ public  interface UserRepository extends JpaRepository<User, Long>, JpaSpecifica
   
   @Query("SELECT u FROM User u WHERE LOWER(u.mobile) = LOWER(:mobile) ")
   public User findByMobile(@Param("mobile") String mobile);
+  
+  @Query("SELECT u FROM User u WHERE u.openid = :openid")
+  public User findByOpenid(@Param("openid") String openid);
 }

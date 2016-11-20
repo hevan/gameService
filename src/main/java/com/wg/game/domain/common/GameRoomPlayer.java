@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.wg.game.domain.user.User;
+
 public class GameRoomPlayer implements Serializable{
 
 	

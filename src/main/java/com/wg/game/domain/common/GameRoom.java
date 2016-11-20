@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.wg.game.domain.user.User;
+
 @Entity
 @Table(name = "game_room")
 public class GameRoom implements Serializable{

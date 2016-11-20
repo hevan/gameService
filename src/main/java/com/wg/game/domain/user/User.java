@@ -1,4 +1,4 @@
-package com.wg.game.domain.common;
+package com.wg.game.domain.user;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.wg.game.domain.common.BeanStatus;
 
 
 @Entity

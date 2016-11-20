@@ -1,8 +1,10 @@
-package com.wg.game.service.common;
+package com.wg.game.service.user;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -10,6 +12,7 @@ import javax.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,8 +21,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.wg.game.domain.common.User;
-import com.wg.game.respository.common.UserRepository;
+import com.wg.game.domain.user.User;
+import com.wg.game.respository.common.user.UserRepository;
+import com.wg.game.utils.ModelUtils;
 
 
 @Service
@@ -28,6 +32,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	/**
 	 * 创建会员分页
@@ -68,20 +75,38 @@ public class UserService {
 	@Transactional
 	public void saveUser(User user) throws Exception {
 
-		userRepository.save(user);
+     try {
+    	    //更新
+			if(null != user.getId()){
+				User userModify = this.userRepository.findOne(user.getId());
+				
+				if (userModify != null) {
+					String[] ignoreProperties = ModelUtils.getIgnoreProperties(user);
+					BeanUtils.copyProperties(user, userModify, ignoreProperties);
+					entityManager.merge(userModify);
+				}
+			
+			}else{
+				//新增
+				userRepository.save(user);
+			}
 
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
-	
 	public User findUserByUsername(String  username) throws Exception {
-
 		return userRepository.findByUsername(username);
-		
 	}
 	
 	public User findUserByMobile(String  mobile) throws Exception {
-
 		return userRepository.findByMobile(mobile);
+	}
+	
+	public User findUserByOpenid(String  openid) throws Exception {
+
+		return userRepository.findByOpenid(openid);
 		
 	}
 	

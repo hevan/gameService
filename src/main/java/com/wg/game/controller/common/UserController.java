@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wg.game.domain.common.User;
+import com.wg.game.domain.user.User;
 import com.wg.game.dto.PageQueryRequest;
 import com.wg.game.dto.PageQueryResult;
-import com.wg.game.service.common.UserService;
+import com.wg.game.service.user.UserService;
 
 @RestController
 @RequestMapping({ "/user" })
