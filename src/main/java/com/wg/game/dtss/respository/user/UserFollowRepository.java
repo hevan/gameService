@@ -14,9 +14,9 @@ public interface UserFollowRepository extends JpaRepository<UserFollow, Long>, J
 	@Query("SELECT u FROM UserFollow u WHERE u.userId =:userId ")
 	List<UserFollow> findAllFollow(@Param("userId")  Long userId);
 	
-	@Query("SELECT u FROM UserFollow u WHERE u.userId =:userId and u.followUser.id = :friendId ")
+	@Query("SELECT u FROM UserFollow u WHERE u.userId =:userId and u.followedUser.id = :friendId ")
 	UserFollow findUserFollowByFriendId(@Param("userId")  Long userId, @Param("friendId")  Long friendId);
 	
-	@Query("SELECT u.followUser.id FROM UserFollow u WHERE u.userId =:userId ")
+	@Query("SELECT u.followedUser.id FROM UserFollow u WHERE u.userId = :userId ")
 	List<Long> findAllFollowId(@Param("userId")  Long userId);
 }

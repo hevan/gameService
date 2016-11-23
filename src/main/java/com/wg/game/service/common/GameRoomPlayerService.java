@@ -22,7 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.wg.game.dtss.domain.common.GameRoom;
 import com.wg.game.dtss.domain.common.GameRoomPlayer;
+import com.wg.game.dtss.domain.user.User;
 import com.wg.game.dtss.respository.common.GameRoomPlayerRepository;
+import com.wg.game.dtss.respository.common.GameRoomRepository;
+import com.wg.game.dtss.respository.user.UserRepository;
 import com.wg.game.utils.ModelUtils;
 
 
@@ -32,6 +35,12 @@ public class GameRoomPlayerService {
 
 	@Autowired
 	private GameRoomPlayerRepository gameRoomPlayerRepository;
+	
+	@Autowired
+	private GameRoomRepository gameRoomRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	
 	@PersistenceContext
@@ -98,6 +107,24 @@ public class GameRoomPlayerService {
 		return gameRoomPlayerRepository.findByRoomNo(roomNo);
 	}
 
+	
+	
+	public Long joinGamePlayer(String roomNo, Long userId) throws Exception {
+		 GameRoom gameRoom = gameRoomRepository.findByRoomNo(roomNo);
+		 
+		 if(null != gameRoom){
+			 GameRoomPlayer gameRoomPlayer = new GameRoomPlayer();
+			 User dbUser = userRepository.findOne(userId);
+			 gameRoomPlayer.setGameRoom(gameRoom);
+			 gameRoomPlayer.setUser(dbUser);
+			 
+			 gameRoomPlayerRepository.save(gameRoomPlayer); 
+			 return gameRoomPlayer.getId();
+		 }
+		 return null;
+	}
+	
+	
 	@Transactional
 	public void delete(Long id) throws Exception {
 		gameRoomPlayerRepository.delete(id);

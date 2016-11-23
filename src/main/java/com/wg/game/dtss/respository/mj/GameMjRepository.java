@@ -10,6 +10,6 @@ import com.wg.game.dtss.domain.mj.GameMj;
 
 public interface GameMjRepository extends JpaRepository<GameMj, Long>, JpaSpecificationExecutor<GameMj>{
 
-	@Query("SELECT u FROM GameMj u WHERE u.name = :name ")
-	  public GameMj findByName(@Param("name") String name);
+	//@Query("SELECT u FROM GameMj u WHERE u.name = :name ")
+	//  public GameMj findByName(@Param("name") String name);
 }

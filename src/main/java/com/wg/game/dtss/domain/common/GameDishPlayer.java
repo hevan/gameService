@@ -30,7 +30,7 @@ public class GameDishPlayer implements Serializable{
 	private Long id;
 
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
-	@JoinColumn(name = "game_room_id")
+	@JoinColumn(name = "game_dish_id")
 	private GameDish gameDish;
 	
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)

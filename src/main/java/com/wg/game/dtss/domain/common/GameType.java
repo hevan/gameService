@@ -19,23 +19,31 @@ public class GameType implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	//主键
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	//游戏名称
 	@Column(length = 20)
 	private String name;
 	
-	private String type; //0对战，1多人，2博彩
+	//对战类型（1：好友对战、2：世界对战）
+	@Column(length = 10)
+	private String type;
 	
-	private BigDecimal usedGold; //消耗金币数
+	//消耗金币数
+	private BigDecimal usedGold;
 	
+	//游戏类型图标
 	@Column(length = 100)
 	private String imageUrl;
 	
+	//游戏信息说明-用户
 	@Column(length = 2000)
 	private String information;
 	
+	//麻将规则-技术人员
 	@Column(length = 2000)
 	private String rules;
 

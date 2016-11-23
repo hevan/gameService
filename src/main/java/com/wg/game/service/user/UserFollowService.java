@@ -3,12 +3,14 @@ package com.wg.game.service.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.wg.game.dtss.domain.user.User;
 import com.wg.game.dtss.domain.user.UserFollow;
 import com.wg.game.dtss.respository.user.UserFollowRepository;
 import com.wg.game.dtss.respository.user.UserRepository;
 
+@Service
 public class UserFollowService {
 	
 	

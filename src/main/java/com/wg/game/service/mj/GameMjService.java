@@ -57,9 +57,7 @@ public class GameMjService {
 		
 	}
 	
-	public GameMj findByName(String  name) throws Exception {
-		return gameMjRepository.findByName(name);
-	}
+	
 
 	
 	@Transactional

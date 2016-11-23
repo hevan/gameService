@@ -19,14 +19,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wg.game.dtss.domain.common.GameAds;
-import com.wg.game.dtss.domain.common.GameDishPlayer;
 import com.wg.game.dtss.domain.common.GameType;
 import com.wg.game.dtss.respository.common.GameAdsRepository;
 import com.wg.game.utils.ModelUtils;
 
+@Service
 public class GameAdsService {
 	private final Logger logger = LoggerFactory.getLogger(GameAdsService.class);
 

@@ -3,15 +3,20 @@ package com.wg.game.dtss.domain.common;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wg.game.dtss.domain.user.User;
 
+@Entity
+@Table(name="game_room_player")
 public class GameRoomPlayer implements Serializable{
 
 	
@@ -27,9 +32,11 @@ public class GameRoomPlayer implements Serializable{
 
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "game_room_id")
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer", "handler", "fieldHandler"})
 	private GameRoom gameRoom;
 	
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer", "handler", "fieldHandler"})
 	@JoinColumn(name = "user_id")
 	private User user;
 	

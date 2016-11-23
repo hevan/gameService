@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wg.game.dtss.domain.user.User;
 
 @Entity
@@ -30,25 +31,34 @@ public class GameRoom implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	//房间号
 	@Column(length = 20)
 	private String roomNo;
 	
+	//游戏类型-外键
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "game_type_id")
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer", "handler", "fieldHandler"})
 	private GameType gameType;
 	
+	//用户ID-外键
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer", "handler", "fieldHandler"})
 	private User user;
 	
-	private Integer gameDish; //游戏盘数
+	//游戏盘数
+	private Integer gameDish; 
 	
-	private Integer baseScore; //基础积分 5块，10块
+	//基础积分 5块，10块
+	private Integer baseScore; 
 	
-	private BigDecimal usedGold; //消耗金币数
+	//消耗金币数
+	private BigDecimal usedGold; 
 	
+	//状态信息
 	@Embedded
-	private BeanStatus beanStatus;//状态信息
+	private BeanStatus beanStatus;
 
 	public Long getId() {
 		return id;

@@ -18,6 +18,7 @@ import com.wg.game.dto.PageQueryResult;
 import com.wg.game.dto.ResultDataDto;
 import com.wg.game.dtss.domain.user.User;
 import com.wg.game.service.user.UserService;
+import com.wg.game.utils.ErrorCode;
 
 @RestController
 @RequestMapping("/user")
@@ -57,7 +58,8 @@ public class UserController {
 		ResultDataDto<User> resultData = new ResultDataDto<User>();
 		try {
 			if (!StringUtils.isEmpty(openid)) {
-
+				//userService.findUserByOpenid(openid);	
+				//判断查询返回进行判断
 				resultData.setData(userService.findUserByOpenid(openid));
 
 			} else {
@@ -69,15 +71,54 @@ public class UserController {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			resultData.setRet("201");
-			resultData.setMessage("系统异常:" + e.getMessage());
+			resultData.setRet(ErrorCode.ERROR_401);
+			resultData.setMessage(ErrorCode.ERROR_401_MESSAGE + e.getMessage());
 
 			return resultData;
 		}
 	}
 
+	//POST
 	@RequestMapping(value = { "/createUser" }, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResultDataDto<User> createUser(User user) {
+
+		ResultDataDto<User> resultData = new ResultDataDto<User>();
+		try {
+
+			User dbUser = userService.findUserByUsername(user.getUsername());
+
+			if (null != dbUser) {
+				resultData.setRet("101");
+				resultData.setMessage("用户已存在，请更换用户名");
+				return resultData;
+			}
+
+			dbUser = userService.findUserByMobile(user.getMobile());
+
+			if (null != dbUser) {
+				resultData.setRet("102");
+				resultData.setMessage("手机号已注册，请更手机号码");
+				return resultData;
+			}
+
+			// 保存用户
+			userService.saveUser(user);
+
+			resultData.setData(user);
+			return resultData;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			resultData.setRet("201");
+			resultData.setMessage("系统异常:" + e.getMessage());
+			return resultData;
+		}
+	}
+	
+	//get
+	@RequestMapping(value = { "/createUserGet" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResultDataDto<User> createUserGet(User user) {
 
 		ResultDataDto<User> resultData = new ResultDataDto<User>();
 		try {
