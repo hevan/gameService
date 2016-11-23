@@ -1,18 +1,22 @@
-package com.wg.game.domain.common;
+package com.wg.game.dtss.domain.common;
 
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import com.wg.game.domain.user.User;
+import com.wg.game.dtss.domain.user.User;
 
-public class GameRoomPlayer implements Serializable{
+@Entity
+@Table(name = "game_dish_player")
+public class GameDishPlayer implements Serializable{
 
 	
 	/**
@@ -27,11 +31,13 @@ public class GameRoomPlayer implements Serializable{
 
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "game_room_id")
-	private GameRoom gameRoom;
+	private GameDish gameDish;
 	
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	private Integer roleType; //参与角色 0 玩家，1买马
 	
 	private Integer score; //个人积分总和
 	
@@ -91,12 +97,12 @@ public class GameRoomPlayer implements Serializable{
 		this.id = id;
 	}
 
-	public GameRoom getGameRoom() {
-		return gameRoom;
+	public GameDish getGameDish() {
+		return gameDish;
 	}
 
-	public void setGameRoom(GameRoom gameRoom) {
-		this.gameRoom = gameRoom;
+	public void setGameDish(GameDish gameDish) {
+		this.gameDish = gameDish;
 	}
 
 	public User getUser() {
@@ -217,6 +223,14 @@ public class GameRoomPlayer implements Serializable{
 
 	public void setAct6Score(Integer act6Score) {
 		this.act6Score = act6Score;
+	}
+
+	public Integer getRoleType() {
+		return roleType;
+	}
+
+	public void setRoleType(Integer roleType) {
+		this.roleType = roleType;
 	} 
 	
 	

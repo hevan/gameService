@@ -20,10 +20,9 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wg.game.domain.common.GameDish;
-import com.wg.game.domain.common.GameDishPlayer;
-import com.wg.game.domain.common.GameRoomPlayer;
-import com.wg.game.respository.common.GameDishPlayerRepository;
+import com.wg.game.dtss.domain.common.GameDish;
+import com.wg.game.dtss.domain.common.GameDishPlayer;
+import com.wg.game.dtss.respository.common.GameDishPlayerRepository;
 import com.wg.game.utils.ModelUtils;
 
 

@@ -1,4 +1,4 @@
-package com.wg.game.domain.user;
+package com.wg.game.dtss.domain.user;
 
 import java.io.Serializable;
 

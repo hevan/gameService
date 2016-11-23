@@ -1,4 +1,4 @@
-package com.wg.game.respository.common;
+package com.wg.game.dtss.respository.common;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.wg.game.domain.common.GameDishPlayer;
+import com.wg.game.dtss.domain.common.GameDishPlayer;
 
 public interface GameDishPlayerRepository extends JpaRepository<GameDishPlayer, Long>, JpaSpecificationExecutor<GameDishPlayer>{
 

@@ -20,9 +20,9 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wg.game.domain.common.GameRoom;
-import com.wg.game.domain.common.GameRoomPlayer;
-import com.wg.game.respository.common.GameRoomPlayerRepository;
+import com.wg.game.dtss.domain.common.GameRoom;
+import com.wg.game.dtss.domain.common.GameRoomPlayer;
+import com.wg.game.dtss.respository.common.GameRoomPlayerRepository;
 import com.wg.game.utils.ModelUtils;
 
 

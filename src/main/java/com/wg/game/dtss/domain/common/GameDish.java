@@ -1,4 +1,4 @@
-package com.wg.game.domain.common;
+package com.wg.game.dtss.domain.common;
 
 import java.io.Serializable;
 
@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.wg.game.domain.user.User;
+import com.wg.game.dtss.domain.user.User;
 
 
 @Entity

@@ -1,12 +1,12 @@
-package com.wg.game.respository.common.mj;
+package com.wg.game.dtss.respository.mj;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.wg.game.domain.common.GameRoom;
-import com.wg.game.domain.mj.GameMj;
+import com.wg.game.dtss.domain.common.GameRoom;
+import com.wg.game.dtss.domain.mj.GameMj;
 
 public interface GameMjRepository extends JpaRepository<GameMj, Long>, JpaSpecificationExecutor<GameMj>{
 

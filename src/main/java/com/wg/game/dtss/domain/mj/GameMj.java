@@ -1,4 +1,4 @@
-package com.wg.game.domain.mj;
+package com.wg.game.dtss.domain.mj;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.wg.game.domain.common.GameType;
+import com.wg.game.dtss.domain.common.GameType;
 
 @Entity
 @Table(name = "game_mj")

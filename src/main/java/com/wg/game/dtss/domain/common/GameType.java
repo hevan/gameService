@@ -1,4 +1,4 @@
-package com.wg.game.domain.common;
+package com.wg.game.dtss.domain.common;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

@@ -21,9 +21,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.wg.game.domain.common.GameRoom;
-import com.wg.game.respository.common.GameRoomRepository;
-import com.wg.game.respository.common.user.UserFollowRepository;
+import com.wg.game.dtss.domain.common.GameRoom;
+import com.wg.game.dtss.respository.common.GameRoomRepository;
+import com.wg.game.dtss.respository.user.UserFollowRepository;
 import com.wg.game.utils.ModelUtils;
 
 

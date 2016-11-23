@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wg.game.domain.mj.GameMj;
-import com.wg.game.respository.common.mj.GameMjRepository;
+import com.wg.game.dtss.domain.mj.GameMj;
+import com.wg.game.dtss.respository.mj.GameMjRepository;
 import com.wg.game.utils.ModelUtils;
 
 @Service
