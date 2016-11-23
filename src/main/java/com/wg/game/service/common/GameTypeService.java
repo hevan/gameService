@@ -101,7 +101,7 @@ public class GameTypeService {
 		
 	}
 	
-	public GameType findByName(String  name) throws Exception {
+	public List<GameType> findByName(String  name) throws Exception {
 		return gameTypeRepository.findByName(name);
 	}
 

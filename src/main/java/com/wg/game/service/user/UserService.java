@@ -110,6 +110,12 @@ public class UserService {
 		
 	}
 	
+	public User findUser(Long  id) throws Exception {
+
+		return userRepository.findOne(id);
+		
+	}
+	
 	@Transactional
 	public void deleteUser(Long id) throws Exception {
 		userRepository.delete(id);

@@ -20,7 +20,7 @@ import com.wg.game.dtss.domain.user.User;
 import com.wg.game.service.user.UserService;
 
 @RestController
-@RequestMapping({ "/user" })
+@RequestMapping("/user")
 public class UserController {
 
 	@Autowired

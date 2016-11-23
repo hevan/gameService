@@ -106,6 +106,12 @@ public class GameRoomService {
 		return gameRoomRepository.findByRoomNo(roomNo);
 	}
 
+	
+	public List<GameRoom> findByMyFriends(List<Long>  friendIds) throws Exception {
+		return gameRoomRepository.findAllByUsers(friendIds);
+	}
+	
+	
 	@Transactional
 	public void delete(Long id) throws Exception {
 		gameRoomRepository.delete(id);
